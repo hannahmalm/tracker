@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #creating the namespace - run rails routes to verify that the route is correct
   namespace :api do 
     namespace :v1 do 
-      resouces :exercises, only: [:index]
+      resources :exercises, only: [:index]
     end 
   end 
 
