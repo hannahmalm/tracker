@@ -5,6 +5,9 @@ class Api::V1::ExercisesController < ApplicationController
         #no longer rendering views - making a fetch request from the front and return all the json from the backend
         exercises = Exercise.all 
         #render json: exercises
+        # options={
+        #     include: [:category] #include the associations for this category, whatever this belongs to
+        # }
         render json: ExerciseSerializer.new(exercises) #create a new instance using a serializer
     end 
 
