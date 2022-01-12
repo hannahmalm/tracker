@@ -4,7 +4,8 @@ class Api::V1::ExercisesController < ApplicationController
         #used to render all the exercises in json form
         #no longer rendering views - making a fetch request from the front and return all the json from the backend
         exercises = Exercise.all 
-        render json: exercises
+        #render json: exercises
+        render json: ExerciseSerializer.new(exercises) #create a new instance using a serializer
     end 
 
     def create #POST /api/v1/exercises - used to create a new exercise based on what exercise params are given from the front end
