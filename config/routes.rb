@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       resources :exercises, only: [:index, :create]
+      resources :categories, only: [:index] #GET /api/v1/categories
     end 
   end 
 
