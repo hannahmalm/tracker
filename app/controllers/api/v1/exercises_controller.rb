@@ -9,7 +9,7 @@ class Api::V1::ExercisesController < ApplicationController
 
     def create #POST /api/v1/exercises - used to create a new exercise based on what exercise params are given from the front end
         exercise = Exercise.new(exercise_params)
-        if exercse.save #once the exercise saves, set the status to successful.
+        if exercise.save #once the exercise saves, set the status to successful.
             render json: exercise, status: :accepted #allows for satuts codes to be sent in the fetch
         else #if the exercise does not save, give a 422 error and print the error 
             render json: {errors: exercise.errors.full_messages}, status: :unprocessible_entity #422 error - usually caused because validations fail
