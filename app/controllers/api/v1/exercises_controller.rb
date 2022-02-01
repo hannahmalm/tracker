@@ -1,10 +1,10 @@
 class Api::V1::ExercisesController < ApplicationController
 
-    def index #GET /api/v1/exercises
-        #used to render all the exercises in json form
+    def index #GET /api/v1/exercises - Used to render all exercises in JSON form
         #no longer rendering views - making a fetch request from the front and return all the json from the backend
-        exercises = Exercise.all 
+        exercises = Exercise.all #local variable - not rendering veiw 
         render json: ExerciseSerializer.new(exercises) #create a new instance using a serializer
+        #render json: exercises, include: [:name, :instructions]
     end 
 
     def create #POST /api/v1/exercises - used to create a new exercise based on what exercise params are given from the front end
@@ -15,6 +15,22 @@ class Api::V1::ExercisesController < ApplicationController
             render json: {errors: exercise.errors.full_messages}, status: :unprocessible_entity #422 error - usually caused because validations fail
         end 
     end
+
+   def show #GET /api/v1/exercises/:id
+    exercise = Exercise.find_by_id(params[:id])
+   end 
+
+   def update #PATCH /api/v1/exercises/:id
+    exercise = Exercise.find_by_id(params[:id])
+    exercise.update(name: params[:name], instructions: params[:instructions], image: params[:image])
+   end 
+
+   def destroy #DELETE /api/v1/exercies/:id
+    exercise = Exercise.find_by_id(params[:id])
+    exercise.destroy!
+   end 
+
+
 
 
     private
