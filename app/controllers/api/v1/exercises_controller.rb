@@ -22,9 +22,8 @@ class Api::V1::ExercisesController < ApplicationController
    end 
 
    def update #PATCH /api/v1/exercises/:id
-    # exercise = Exercise.find_by_id(params[:id])
-    # exercise.update(name: params[:name], instructions: params[:instructions], image: params[:image])
-   
+     exercise = Exercise.find_by_id(params[:id])
+     exercise.update(name: params[:name], instructions: params[:instructions], image: params[:image])
    end 
 
    def destroy #DELETE /api/v1/exercies/:id
